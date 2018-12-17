@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { PokemonsService } from "../../services/pokemons.service";
+import { books } from "../../../books";
+import { IPokeList } from '../../models/interfaces/poke-list';
+//import { DataServicesService } from "../../../core/services/data-services.service";
+
+@Component({
+  selector: 'app-poke-list',
+  templateUrl: './poke-list.component.html',
+  styleUrls: ['./poke-list.component.css']
+})
+export class PokeListComponent implements OnInit {
+
+  pokeList: IPokeList;
+  message:string;
+  constructor(private pokeService: PokemonsService) {  }//, private data:DataServicesService) { }
+
+  ngOnInit() {
+    this.pokeService.list()
+    .subscribe(
+      list => {
+        this.pokeList = list;
+      }
+    );
+  }
+
+  searchPokemon(){
+    /*this.data.currentMessage.subscribe(message => this.message = message);
+    console.log(this.message);
+    this.pokeService.searchPokemon(this.message)
+    .subscribe(
+      list => {
+        this.pokeList = list;
+      }
+    );*/
+  }
+}

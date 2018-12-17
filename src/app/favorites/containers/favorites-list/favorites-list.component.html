@@ -1,0 +1,31 @@
+<div class="row" id="books">
+  <div *ngFor="let book of bookList" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+      <div class="card">
+          <div class="card-header">
+              {{book.name}}
+          </div>
+          <img class="card-img-top" src="{{book.sprites.front_default}}" />
+          <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <h5 class="card-text">
+                    Habilidades:
+                    </h5>
+                </div>
+                <div class="col-12">
+                <span *ngFor="let ab of book.abilities" class="badge badge-pill badge-success">{{ab?.ability.name}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <a class="btn btn-primary col-12 col-md-auto col-lg-auto">Ver Detalle</a>
+                </div>
+                <div class="col-2">
+                    <button class="btn btn-primary" (click)="removeFavorite(book.key)">
+                    <i class="fa fa-window-close"></i></button>
+                </div>
+            </div>
+            </div>
+      </div>
+  </div>
+</div>

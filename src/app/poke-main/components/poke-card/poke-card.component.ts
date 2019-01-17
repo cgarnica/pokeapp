@@ -10,6 +10,7 @@ export class PokeCardComponent implements OnInit {
   
   _pokeResult: {name: string, url: string};
   _poke: any;
+  _pokeFavorites:any[];
 
   @Input() 
   get poke() : {name: string, url: string}{
@@ -25,9 +26,35 @@ export class PokeCardComponent implements OnInit {
     )
   }
 
+
+
+  @Input() 
+  get pokeFavorites() : any[]{
+    return this._pokeFavorites;
+  };
+
+  set pokeFavorites(favo:any[]){
+    console.log("favo");
+    console.log(favo);
+    this._pokeFavorites = favo;
+  };
+
+
   addFavorite(book){
     console.log('click');
     this.pokeService.addFavorite(book);
+  }
+
+  isFavorite():boolean{
+    for (let entry of this._pokeFavorites) {
+      console.log('dato')
+      console.log(entry); 
+     console.log(this._poke.id)
+     if(entry.id == this._poke.id){
+       return true;
+     }
+    }
+    return false;
   }
 
   

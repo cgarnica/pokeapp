@@ -1,0 +1,13 @@
+<form (ngSubmit)="submit()" #newForm="ngForm">
+  <h2 style="color:black">Crear Nueva Colección</h2>
+  <div class="form-group">
+      <h4>Nombre</h4>
+      <input type="name" style="background-color: lightgray" [(ngModel)]="collection.name" required #name="ngModel" name="name">        
+      <br>
+      <h4>Descripción</h4>
+      <input type="description"   style="background-color: lightgray"  [(ngModel)]="collection.description" name="description">
+  </div>
+  <div class="footers">
+      <button [disabled]="!newForm.form.valid" type="submit" class="btn btn-primary">Nueva colección</button>
+  </div>
+</form>

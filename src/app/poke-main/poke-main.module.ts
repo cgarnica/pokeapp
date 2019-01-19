@@ -5,10 +5,12 @@ import { PokeListComponent } from './containers/poke-list/poke-list.component';
 
 import { routes } from "./routes.poke";
 import { PokeCardComponent } from './components/poke-card/poke-card.component';
+import { DetailPokeModule } from '../detail-poke/detail-poke.module';
+
 
 @NgModule({
   declarations: [PokeListComponent, PokeCardComponent],
-  imports: [
+  imports: [DetailPokeModule,
     CommonModule,
     RouterModule.forChild(routes)
   ]

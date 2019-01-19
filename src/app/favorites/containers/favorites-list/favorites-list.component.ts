@@ -22,7 +22,7 @@ export class FavoritesListComponent implements OnInit {
             .subscribe(
               list => {
                 this.bookList = list;
-                console.log(this.bookList);
+                //console.log(this.bookList);
               }
             );
         }
@@ -31,7 +31,7 @@ export class FavoritesListComponent implements OnInit {
   }
 
   removeFavorite(poke){
-    console.log(poke);
+    //console.log(poke);
     this.pokeService.removeFavorite(poke);
   }
 

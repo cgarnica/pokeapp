@@ -34,22 +34,20 @@ export class PokeCardComponent implements OnInit {
   };
 
   set pokeFavorites(favo:any[]){
-    console.log("favo");
-    console.log(favo);
+
     this._pokeFavorites = favo;
   };
 
 
   addFavorite(book){
-    console.log('click');
+  
     this.pokeService.addFavorite(book);
   }
 
   isFavorite():boolean{
     for (let entry of this._pokeFavorites) {
-      console.log('dato')
-      console.log(entry); 
-     console.log(this._poke.id)
+ 
+  
      if(entry.id == this._poke.id){
        return true;
      }

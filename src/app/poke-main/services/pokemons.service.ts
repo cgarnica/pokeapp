@@ -39,7 +39,7 @@ export class PokemonsService {
 
   listPagination(offSet:any, limit:any) : Observable<IPokeList>{
     const url = `${this.url}pokemon/`+"?offset="+offSet+"&limit="+limit;
-    console.log(url);
+ 
     return this.http.get<IPokeList>(url)
     .pipe(
       catchError(this.handleError('Get Pokemons List', null))
@@ -64,8 +64,7 @@ export class PokemonsService {
   }
 
   removeFavorite(poke : any){
-    console.log('borrado');
-    console.log(poke);
+   
     this.favsRef.remove(poke);
   }
 

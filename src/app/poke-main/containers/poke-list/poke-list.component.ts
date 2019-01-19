@@ -32,14 +32,13 @@ export class PokeListComponent implements OnInit {
             .subscribe(
               list => {
                 this.bookList = list;
-                console.log(this.bookList);
+               // console.log(this.bookList);
               }
             );
         }
       }
     );
-    console.log("bien");
-    console.log(this.bookList);
+
 
 
     this.list();

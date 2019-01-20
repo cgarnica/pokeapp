@@ -1,4 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Store, select } from "@ngrx/store";
+import * as fromRoot from "../../../reducers";
+import * as Layout from "../../actions/layout";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-top-nav-bar',
@@ -8,13 +12,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class TopNavBarComponent implements OnInit {
 
   @Output() searchTop = new EventEmitter<string>();
-  @Output() stateAside = new EventEmitter<string>();
+  //@Output() stateAside = new EventEmitter<string>();
 
-  _state: string = 'open';
+  _state: String;
+  stateAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
 
-  constructor() { }
+  constructor(private store: Store<fromRoot.State>) {  }
 
   ngOnInit() {
+    this.stateAside$.subscribe(
+      state => {
+        this._state = state
+      }
+    );
   }
 
   search(data :string) {
@@ -23,12 +33,22 @@ export class TopNavBarComponent implements OnInit {
 
   close(){
     if(this._state == 'open'){
-      this._state = 'close';
-      this.stateAside.emit(this._state);
+      this.store.dispatch(new Layout.CloseSideNav);
+      //this._state = 'close';
+      //this.stateAside.emit(this._state);
     }else {
-      this._state = 'open';
-      this.stateAside.emit(this._state);
+      this.store.dispatch(new Layout.OpenSideNav);
+      //this._state = 'open';
+      //this.stateAside.emit(this._state);
     }
   }
+
+  /*open() {
+    if (this._state === 'close') {
+      this.store.dispatch(new layout.OpenSideNav());
+    } else {
+      this.store.dispatch(new layout.CloseSideNav());
+    }
+  }*/
 
 }

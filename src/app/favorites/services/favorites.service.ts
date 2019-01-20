@@ -26,7 +26,7 @@ export class FavoritesService {
         changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
       )
     )
-    this.items.subscribe(val => console.log(val));
+    //this.items.subscribe(val => console.log(val));
     return this.items;
   }
 }

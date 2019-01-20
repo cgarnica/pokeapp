@@ -21,9 +21,7 @@ export class PokeDetailComponent implements OnInit {
       return this.pokemonService.getPokemonByUrl(this.url+"pokemon/"+params.id).toPromise().then(
         p => {
           this.poke = p;
-          this.id = params.id;
-          console.log(this.url+"/"+params.id, "dddddddddd");
-          
+          this.id = params.id;          
         }
       );
     });

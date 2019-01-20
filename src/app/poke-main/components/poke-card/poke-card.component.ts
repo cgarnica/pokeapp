@@ -48,7 +48,7 @@ export class PokeCardComponent implements OnInit {
     for (let entry of this._pokeFavorites) {
  
   
-     if(entry.id == this._poke.id){
+     if(entry && this._poke && entry.id == this._poke.id){
        return true;
      }
     }

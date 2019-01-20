@@ -30,7 +30,7 @@ export class CollectionListComponent implements OnInit {
           map(changes => 
             changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
           ));
-        console.log(this.listCollections);
+        //console.log(this.listCollections);
       }
     );   
   }

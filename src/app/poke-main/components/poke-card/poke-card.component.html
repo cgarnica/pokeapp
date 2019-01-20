@@ -20,7 +20,7 @@
           <i  [className]="isFavorite() ? 'fa fa-heart' : 'fa fa-heart-o'" ></i></button>
       </div>
       <div class="col-6">
-        <a  class="btn btn-primary col-12 col-md-auto col-lg-auto" [routerLink]="['../detail-poke', _poke.id]">Ver Detalle</a>
+        <a  class="btn btn-primary col-12 col-md-auto col-lg-auto" [routerLink]="['../detail-poke', _poke?.id]">Ver Detalle</a>
       </div>
     </div>
   </div>

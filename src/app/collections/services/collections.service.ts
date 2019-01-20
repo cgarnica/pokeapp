@@ -65,8 +65,8 @@ export class CollectionService {
     const promise = favsRef1.push(book);
     promise.then(
       _ => {
-       // alert("Pokemon Agregado");
-        this.alertService.message({msg: "Pokemon Agregado", type: 'success'});
+        alert("Pokemon Agregado");
+        //this.alertService.message({msg: "Pokemon Agregado", type: 'success'});
       }
     );
    // promise.then(() => {

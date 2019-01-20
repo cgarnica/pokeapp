@@ -1,5 +1,8 @@
 import { Component, OnInit, OnChanges } from '@angular/core';
 import { trigger,state,style,transition,animate } from "@angular/animations";
+import { Store, select } from "@ngrx/store";
+import * as fromRoot from "../../../reducers";
+import { Observable } from "rxjs";
 
 @Component({
   selector: 'app-core',
@@ -22,18 +25,24 @@ export class CoreComponent implements OnInit {
 
   dataBook: string;
   state: string;
+  stateAside$:Observable<string> = this.store.pipe(select(fromRoot.getShowSideNav));
 
-  constructor() { }  
+  constructor(private store: Store<fromRoot.State>) { }  
 
   ngOnInit() {
+    this.stateAside$.subscribe(
+      state => {
+        this.state = state;
+      }
+    );
   }
 
   searchBook(data: string){
     this.dataBook = data;
   }
 
-  eventAside(data: string) {
+  /*eventAside(data: string) {
     this.state = data;
-  }
+  }*/
 
 }

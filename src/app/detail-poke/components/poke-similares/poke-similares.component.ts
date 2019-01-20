@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
+import { IPokeList } from 'src/app/poke-main/models/interfaces/poke-list';
 
 @Component({
   selector: 'app-poke-similares',
@@ -7,7 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokeSimilaresComponent implements OnInit {
 
-  constructor() { }
+
+  _pokeResult: {name: string, url: string};
+  _poke: any;
+
+  @Input() 
+  get poke() : {name: string, url: string}{
+    return this._pokeResult;
+  };
+
+  set poke(result : {name: string, url: string}){
+    this.pokeService.getPokemonByUrl(result.url)
+    .subscribe(
+      pokemon => {
+        this._poke = pokemon;
+      }
+    )
+  }
+
+
+  constructor(private pokeService: PokemonsService) { }
 
   ngOnInit() {
   }

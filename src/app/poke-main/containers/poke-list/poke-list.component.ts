@@ -14,7 +14,7 @@ import { AlertMessagesComponent } from 'src/app/alerts/components/alert-messages
 export class PokeListComponent implements OnInit {
 
   pokeList: IPokeList;
-  bookList: any[] = [];
+  favoriteList: any[] = [];
   page: any;
   limit:any;
 
@@ -31,7 +31,7 @@ export class PokeListComponent implements OnInit {
           this.favoritesServices.listFavorites(user)
             .subscribe(
               list => {
-                this.bookList = list;
+                this.favoriteList = list;
                // console.log(this.bookList);
               }
             );

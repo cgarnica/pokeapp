@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
 import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
 import { environment } from 'src/environments/environment';
+import { IPokeList } from 'src/app/poke-main/models/interfaces/poke-list';
 
 @Component({
   selector: 'app-poke-detail',
@@ -13,6 +14,8 @@ export class PokeDetailComponent implements OnInit {
   url:string = environment.apiUrl;
   id: string;
   poke:any;
+  pokeList: IPokeList;
+
   constructor(private router: ActivatedRoute, private pokemonService : PokemonsService) { }
 
   ngOnInit() {
@@ -25,6 +28,14 @@ export class PokeDetailComponent implements OnInit {
         }
       );
     });
+
+    this.pokemonService.listPagination(0, 5)
+    .subscribe(
+      list => {
+        this.pokeList = list;
+      }
+    );
+
   }
 
 }

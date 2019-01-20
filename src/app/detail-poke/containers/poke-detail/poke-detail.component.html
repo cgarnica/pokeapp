@@ -1,9 +1,15 @@
 
-<p>  
+
   <app-poke-info [id]="id" [poke]="poke"></app-poke-info>
   
-
-  similares
+  <h4>
+    Similares
+  </h4>
   <br>
-  <app-poke-similares></app-poke-similares>
-</p>
+  <div class="row">
+      <div *ngFor="let pokemon of pokeList?.results;" class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-3">
+          <app-poke-similares [poke]="pokemon"></app-poke-similares>
+  </div>
+
+  
+

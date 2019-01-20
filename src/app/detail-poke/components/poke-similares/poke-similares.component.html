@@ -1,3 +1,13 @@
-<p>
-  componente para la lista de pokemones similares
-</p>
+<div class="card">
+    <div class="card-header">
+      {{_poke?.name}}
+    </div>
+    <img class="card-img-top" src="{{_poke?.sprites.front_default}}" />
+    <div class="card-body">
+      <div class="row">
+        <div class="col-6">
+          <a  class="btn btn-primary col-12 col-md-auto col-lg-auto" [routerLink]="['../../detail-poke', _poke?.id]">Ver Detalle</a>
+        </div>
+      </div>
+    </div>
+  </div>

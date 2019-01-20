@@ -28,6 +28,8 @@ export class PokeInfoComponent implements OnInit {
 
   @Input()
   id:string;
+  @Input()
+  poke:any;
 
 
   listCollections: Observable<any[]>;
@@ -57,7 +59,7 @@ export class PokeInfoComponent implements OnInit {
 
   addToCollection(event:any){
 
-    //this.collectionService.addBook(event.target.value, this.book);
+    this.collectionService.addBook(event.target.value, this.poke);
   }
 
   onNavImageClick(){

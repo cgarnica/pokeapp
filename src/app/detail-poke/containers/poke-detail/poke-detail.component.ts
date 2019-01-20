@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Params, ActivatedRoute } from '@angular/router';
+import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-poke-detail',
@@ -7,13 +9,23 @@ import { Params, ActivatedRoute } from '@angular/router';
   styleUrls: ['./poke-detail.component.css']
 })
 export class PokeDetailComponent implements OnInit {
-
+  
+  url:string = environment.apiUrl;
   id: string;
-  constructor(private router: ActivatedRoute) { }
+  poke:any;
+  constructor(private router: ActivatedRoute, private pokemonService : PokemonsService) { }
 
   ngOnInit() {
     this.router.params.subscribe((params: Params) => {
-      this.id = params.id;
+      
+      return this.pokemonService.getPokemonByUrl(this.url+"pokemon/"+params.id).toPromise().then(
+        p => {
+          this.poke = p;
+          this.id = params.id;
+          console.log(this.url+"/"+params.id, "dddddddddd");
+          
+        }
+      );
     });
   }
 

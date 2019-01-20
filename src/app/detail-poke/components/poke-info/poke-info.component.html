@@ -1,31 +1,49 @@
 
-  componente para la info del detalle del pokemon
-  {{id}}
-
-
-<br/>
-
-
-<div class="col-6">
-  <button class="btn btn-primary" (click)="onNavImageClick();">
-    <i class="fa fa-list-ul"></i> Agregar a Colleccion</button>
-    <div class="user-window panel"  [@popupAnimation]="popupState" [ngClass]="((popupState == 'closed') ? 'user-window-hidden': '')" (click)="onNavImageClick();">
-      <div style="align-self: center;">
-         <h5 style="color:black">Agregar a Colección</h5>
-          <div class="row">
-            <ul class="form-group">
-              <li *ngFor="let collection of listCollections | async">
-                  <button class="btn btn-primary" style="color: black" [value]='collection.key' (click)="addToCollection($event)">{{collection.name}}</button> 
-                  <br>
-              </li>
-            </ul>
-              
-
-          </div>
-        
+<div class="row">
+<div class="card">
+    <div class="card-header">
+      {{poke?.name}}
+    </div>
+    <img class="card-img-top" src="{{poke?.sprites.front_default}}" />
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12">
+            <h5 class="card-text">
+              Habilidades:
+            </h5>
+        </div>
+        <div class="col-12">
+          <span *ngFor="let ab of poke?.abilities" class="badge badge-pill badge-success">{{ab?.ability.name}}</span>
+        </div>
       </div>
-    </div>  
-</div>
+      
+    </div>
+  </div>
+
+  <div class="col-6">
+      <button class="btn btn-primary" (click)="onNavImageClick();">
+        <i class="fa fa-list-ul"></i> Agregar a Colleccion</button>
+        <div class="user-window panel"  [@popupAnimation]="popupState" [ngClass]="((popupState == 'closed') ? 'user-window-hidden': '')" (click)="onNavImageClick();">
+          <div style="align-self: center;">
+             <h5 style="color:black">Agregar a Colección</h5>
+              <div class="row">
+                <ul class="form-group">
+                  <li *ngFor="let collection of listCollections | async">
+                      <button class="btn btn-primary" style="color: black" [value]='collection.key' (click)="addToCollection($event)">{{collection.name}}</button> 
+                      <br>
+                  </li>
+                </ul>
+                  
+    
+              </div>
+            
+          </div>
+        </div>  
+    </div>
+
+  </div>
+
+
 
 
 

@@ -15,13 +15,13 @@ import { AngularFireList } from '../../../../../node_modules/angularfire2/databa
 })
 export class CollectionPokemonComponent implements OnInit {
 
-  books: Observable<any[]>;
+  pokemons: Observable<any[]>;
   id: string;
   @Input()  status: string;
 
   constructor(private route: ActivatedRoute, private collectionService:CollectionService, 
     private authFire: AngularFireAuth) { 
-    this.books = null;
+    this.pokemons = null;
   }
 
   ngOnInit() {
@@ -31,7 +31,7 @@ export class CollectionPokemonComponent implements OnInit {
     this.authFire.authState
     .subscribe(
       user => {          
-        this.books =  this.collectionService.getBooksInCollection(this.id).snapshotChanges().pipe(
+        this.pokemons =  this.collectionService.getBooksInCollection(this.id).snapshotChanges().pipe(
           map(changes => 
             changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
           ));

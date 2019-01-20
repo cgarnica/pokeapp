@@ -17,7 +17,7 @@ export class CollectionService {
   favsRef1: AngularFireList<any> = null;
 
   constructor(private alertService: MessagesService, private authFire: AngularFireAuth,
-    private rdb: AngularFireDatabase) { 
+    private rdb: AngularFireDatabase, ) { 
       authFire.authState.subscribe(
         user => {
           this.user = user;
@@ -28,10 +28,18 @@ export class CollectionService {
 
   newCollection(collection:Collection){
       const promise = this.favsRef.push(collection);
-      promise.then(() => {
-        alert("Colección creada. ");
+
+      promise.then(
+        _ => {
+          //alert("Colección creada. ");
+          this.alertService.message({msg: "Colección creada. ", type: 'success'});
+        }
+      );
+
+      //promise.then(() => {
+      //  alert("Colección creada. ");
         //this.alertService.message("Colección creada. ", "success");
-      });
+    //  });
     }
 
   getListCollections(): AngularFireList<any[]>{
@@ -39,8 +47,8 @@ export class CollectionService {
    
   }
 
-  getBooksInCollection(key:string): AngularFireList<any[]>{
-    this.favsRef1 = this.rdb.list<any[]>('collections/' + this.user.uid + "/" + key + "/books");
+  getPokemonsInCollection(key:string): AngularFireList<any[]>{
+    this.favsRef1 = this.rdb.list<any[]>('collections/' + this.user.uid + "/" + key + "/pokemons");
     return this.favsRef1;
   }
 
@@ -48,17 +56,23 @@ export class CollectionService {
     this.rdb.list<any[]>('collections/' + this.user.uid + "/" + key).remove()
   }
 
-  removeBookFromCollection(key:string, bookId:string){
-    this.rdb.list<any[]>('collections/' + this.user.uid + "/" + key + "/books/" + bookId).remove();
+  removePokemonFromCollection(key:string, bookId:string){
+    this.rdb.list<any[]>('collections/' + this.user.uid + "/" + key + "/pokemons/" + bookId).remove();
   }
 
-  addBook(key:string, book: any){
-    let favsRef1 = this.rdb.list('collections/' + this.user.uid + "/" + key + "/books");
+  addPokemon(key:string, book: any){
+    let favsRef1 = this.rdb.list('collections/' + this.user.uid + "/" + key + "/pokemons");
     const promise = favsRef1.push(book);
-    promise.then(() => {
-      alert("Libro agregado");
-      //this.alertService.message("Libro agregado","success");
-    });
+    promise.then(
+      _ => {
+       // alert("Pokemon Agregado");
+        this.alertService.message({msg: "Pokemon Agregado", type: 'success'});
+      }
+    );
+   // promise.then(() => {
+      //alert("Pokemon agregado");
+     // this.alertService.message("Pokemon agregado","success");
+    //});
 
   }
 }

@@ -10,7 +10,7 @@ import { PokemonsService } from '../../../poke-main/services/pokemons.service';
 })
 export class FavoritesListComponent implements OnInit {
 
-  bookList: any[] = [];
+  pokemonList: any[] = [];
 
   constructor(private authFire: AngularFireAuth, private favoritesService: FavoritesService, private pokeService: PokemonsService) { }
 
@@ -21,7 +21,7 @@ export class FavoritesListComponent implements OnInit {
           this.favoritesService.listFavorites(user)
             .subscribe(
               list => {
-                this.bookList = list;
+                this.pokemonList = list;
                 //console.log(this.bookList);
               }
             );

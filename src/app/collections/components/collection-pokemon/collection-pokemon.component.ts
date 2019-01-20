@@ -31,7 +31,7 @@ export class CollectionPokemonComponent implements OnInit {
     this.authFire.authState
     .subscribe(
       user => {          
-        this.pokemons =  this.collectionService.getBooksInCollection(this.id).snapshotChanges().pipe(
+        this.pokemons =  this.collectionService.getPokemonsInCollection(this.id).snapshotChanges().pipe(
           map(changes => 
             changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
           ));
@@ -42,7 +42,7 @@ export class CollectionPokemonComponent implements OnInit {
 
   removeBook(title: string, key: string){
     
-      this.collectionService.removeBookFromCollection(this.id, key);
+      this.collectionService.removePokemonFromCollection(this.id, key);
   };
 
 }

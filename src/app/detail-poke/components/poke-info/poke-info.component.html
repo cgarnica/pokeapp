@@ -16,6 +16,37 @@
           <span *ngFor="let ab of poke?.abilities" class="badge badge-pill badge-success">{{ab?.ability.name}}</span>
         </div>
       </div>
+      <div class="row">
+          <div class="col-12">
+                  <h5 class="card-text">
+                  Peso:
+                  </h5>
+          </div>
+          <div class="col-12">
+            {{poke?.weight}}
+          </div>
+      </div>
+      <div class="row">
+          <div class="col-12">
+                  <h5 class="card-text">
+                  Altura:
+                  </h5>
+          </div>
+          <div class="col-12">
+            {{poke?.height}}
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12">
+                  <h5 class="card-text">
+                  Tipo:
+                  </h5>
+          </div>
+          <div class="col-12">
+              <span *ngFor="let t of poke?.types" class="badge badge-pill badge-success">{{t.type.name}}</span>
+            </div>
+      </div>
       
     </div>
   </div>

@@ -59,7 +59,7 @@ export class PokeInfoComponent implements OnInit {
 
   addToCollection(event:any){
 
-    this.collectionService.addBook(event.target.value, this.poke);
+    this.collectionService.addPokemon(event.target.value, this.poke);
   }
 
   onNavImageClick(){

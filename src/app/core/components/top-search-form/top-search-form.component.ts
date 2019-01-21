@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SearchDataService } from 'src/app/services/search-data.service';
 
 @Component({
   selector: 'app-top-search-form',
@@ -9,13 +10,13 @@ export class TopSearchFormComponent implements OnInit {
 
   @Output() search = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private searchService: SearchDataService) { }
 
   ngOnInit() {
   }
 
   searchBooks(data: string) {
-    this.search.emit(data);
+    this.searchService.changeMessage(data);
   }
 
 }

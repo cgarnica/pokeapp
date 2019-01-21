@@ -5,6 +5,7 @@ import { IPokeList } from '../../models/interfaces/poke-list';
 import { FavoritesService } from '../../../favorites/services/favorites.service';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AlertMessagesComponent } from 'src/app/alerts/components/alert-messages/alert-messages.component';
+import { SearchDataService } from 'src/app/services/search-data.service';
 
 @Component({
   selector: 'app-poke-list',
@@ -18,9 +19,13 @@ export class PokeListComponent implements OnInit {
   page: any;
   limit:any;
 
-  constructor(private pokeService: PokemonsService, private favoritesServices: FavoritesService, private authFire: AngularFireAuth) { }
+  constructor(private pokeService: PokemonsService, private favoritesServices: FavoritesService, private authFire: AngularFireAuth, private searchService: SearchDataService) { }
 
   ngOnInit() {
+    this.searchService.currentMessage.subscribe(message => {
+      if(message)
+        alert(message)}
+      );
     this.page = 0;
     this.limit = 15;
     //

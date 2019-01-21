@@ -1,14 +1,19 @@
 
 <div class="row">
-<div class="card">
-    <div class="card-header">
+<div class="detail">
+    <div class="detail-header">
       {{poke?.name}}
     </div>
-    <img class="card-img-top" src="{{poke?.sprites.front_default}}" />
-    <div class="card-body">
+    <img class="detail-img-top" src="{{poke?.sprites.front_default}}" />
+    <div class="detail-body">
       <div class="row">
         <div class="col-12">
-            <h5 class="card-text">
+            <h5 class="detail-text">
+              Detalle: {{poke?.species}}
+            </h5>
+        </div>
+        <div class="col-12">
+            <h5 class="detail-text">
               Habilidades:
             </h5>
         </div>
@@ -18,7 +23,7 @@
       </div>
       <div class="row">
           <div class="col-12">
-                  <h5 class="card-text">
+                  <h5 class="detail-text">
                   Peso:
                   </h5>
           </div>
@@ -28,7 +33,7 @@
       </div>
       <div class="row">
           <div class="col-12">
-                  <h5 class="card-text">
+                  <h5 class="detail-text">
                   Altura:
                   </h5>
           </div>
@@ -39,7 +44,7 @@
 
       <div class="row">
           <div class="col-12">
-                  <h5 class="card-text">
+                  <h5 class="detail-text">
                   Tipo:
                   </h5>
           </div>

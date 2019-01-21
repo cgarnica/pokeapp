@@ -1,11 +1,10 @@
 <div class="background-login" [ngStyle]="{height: heightDiv}">
   <div class="login-box">
-    <div class="login-logo">
-      <a href="">
-        <b>Bzg POKE</b>APP</a>
+    <div class="login-logo elegantshd">
+      <b>PokeApp</b>
     </div>    
     <div class="login-box-body">
-      <p class="login-box-msg">Ingresa tu usuario y contraseña</p>      
+      <p class="login-box-msg">Entrar a la PaokeApp <i class="fa fa-simplybuilt" aria-hidden="true"></i> </p>   
       <app-login-form (submitted)="auth($event)" (signByGoogle)="signWithGoogle($event)"></app-login-form>
     </div>    
   </div>  

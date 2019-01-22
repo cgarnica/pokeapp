@@ -2,9 +2,31 @@
 <div class="row">
 <div class="detail">
     <div class="detail-header">
-      {{poke?.name}}
+      <div class="title">
+        {{poke?.name}}
+      </div>
+      <div class="btn-add">
+        <div class="col-6">
+          <button class="btn btn-primary" (click)="onNavImageClick();">
+            <i class="fa fa-list-ul"></i> Agregar a Colleccion
+          </button>
+          <div class="user-window panel"  [@popupAnimation]="popupState" [ngClass]="((popupState == 'closed') ? 'user-window-hidden': '')" (click)="onNavImageClick();">
+            <div style="align-self: center;">
+              <h5 style="color:black">Agregar a Colección</h5>
+              <div class="row">
+                <ul class="form-group">
+                  <li *ngFor="let collection of listCollections | async">
+                    <button class="btn btn-primary" style="color: black" [value]='collection.key' (click)="addToCollection($event)">{{collection.name}}</button> 
+                    <br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
     </div>
-    <img class="detail-img-top" src="{{poke?.sprites.front_default}}" />
+    <img class="detail-img-top img-detail" src="{{poke?.sprites.front_default}}" />
     <div class="detail-body">
       <div class="row">
         <div class="col-12">
@@ -55,29 +77,7 @@
       
     </div>
   </div>
-
-  <div class="col-6">
-      <button class="btn btn-primary" (click)="onNavImageClick();">
-        <i class="fa fa-list-ul"></i> Agregar a Colleccion</button>
-        <div class="user-window panel"  [@popupAnimation]="popupState" [ngClass]="((popupState == 'closed') ? 'user-window-hidden': '')" (click)="onNavImageClick();">
-          <div style="align-self: center;">
-             <h5 style="color:black">Agregar a Colección</h5>
-              <div class="row">
-                <ul class="form-group">
-                  <li *ngFor="let collection of listCollections | async">
-                      <button class="btn btn-primary" style="color: black" [value]='collection.key' (click)="addToCollection($event)">{{collection.name}}</button> 
-                      <br>
-                  </li>
-                </ul>
-                  
-    
-              </div>
-            
-          </div>
-        </div>  
-    </div>
-
-  </div>
+</div>
 
 
 

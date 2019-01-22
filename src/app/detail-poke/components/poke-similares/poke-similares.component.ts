@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
 import { IPokeList } from 'src/app/poke-main/models/interfaces/poke-list';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-poke-similares',
@@ -28,9 +30,12 @@ export class PokeSimilaresComponent implements OnInit {
   }
 
 
-  constructor(private pokeService: PokemonsService) { }
+  constructor(private pokeService: PokemonsService, private location: Location) { }
 
   ngOnInit() {
   }
 
+  load(): void {
+    location.reload();
+  }
 }

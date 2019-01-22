@@ -15,11 +15,11 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-2 link-1">
         <button class="btn btn-primary" (click)="addFavorite(_poke)">
           <i  [className]="isFavorite() ? 'fa fa-heart' : 'fa fa-heart-o'" ></i></button>
       </div>
-      <div class="col-6">
+      <div class="col-6 link-2">
         <a  class="btn btn-primary col-12 col-md-auto col-lg-auto" [routerLink]="['../detail-poke', _poke?.id]">Ver Detalle</a>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { ICollection } from 'src/app/collections/models/collection';
 import { CollectionService } from 'src/app/collections/services/collections.service';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { map } from 'rxjs/operators';
+import { PokemonsService } from 'src/app/poke-main/services/pokemons.service';
 
 @Component({
   selector: 'app-poke-info',
@@ -29,7 +30,23 @@ export class PokeInfoComponent implements OnInit {
   @Input()
   id:string;
   @Input()
-  poke:any;
+  get poke():any {
+    return this._poke;
+  } 
+  set poke(data: any) {
+    this._poke = data;
+    
+      this.pokeService.getPokemonByUrl(this.poke.species.url).subscribe(
+        p => {
+         this.description = p.flavor_text_entries[3].flavor_text;
+        }
+      );
+    
+  }
+ 
+  _poke:any;
+
+  description:string;
 
 
   listCollections: Observable<any[]>;
@@ -38,7 +55,7 @@ export class PokeInfoComponent implements OnInit {
   popupState:string;
 
 
-  constructor(private collectionService:CollectionService, private authFire: AngularFireAuth) {
+  constructor(private collectionService:CollectionService, private authFire: AngularFireAuth, private pokeService: PokemonsService) {
     this.listCollections = null;
     this.collectionSelected = null;
     this.state = 'open';
@@ -46,6 +63,8 @@ export class PokeInfoComponent implements OnInit {
    }
 
   ngOnInit() {
+
+
     this.authFire.authState
     .subscribe(
       user => {          
@@ -55,6 +74,15 @@ export class PokeInfoComponent implements OnInit {
           ));
       }
     ); 
+
+  
+    
+
+
+   
+
+
+
   }
 
   addToCollection(event:any){

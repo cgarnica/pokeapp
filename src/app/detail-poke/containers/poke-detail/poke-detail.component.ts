@@ -19,23 +19,25 @@ export class PokeDetailComponent implements OnInit {
   constructor(private router: ActivatedRoute, private pokemonService : PokemonsService) { }
 
   ngOnInit() {
-    this.router.params.subscribe((params: Params) => {
-      
+    this.router.params.subscribe((params: Params) => {  
       return this.pokemonService.getPokemonByUrl(this.url+"pokemon/"+params.id).toPromise().then(
         p => {
           this.poke = p;
-          this.id = params.id;          
+          this.id = params.id;    
         }
       );
     });
 
-    this.pokemonService.listPagination(0, 5)
+    let n = this.randomInt(0,200);
+    this.pokemonService.listPagination(n, 4)
     .subscribe(
       list => {
         this.pokeList = list;
       }
     );
-
   }
 
+  randomInt(min, max){
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
 }

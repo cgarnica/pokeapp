@@ -1,0 +1,12 @@
+.card{
+    border-radius: 5px;
+    border-color: #333;
+    margin: 5px;
+}
+
+.card-header{
+    border-radius: 5px;
+    border-color: #333;
+    background-color: #ef5350;
+}
+

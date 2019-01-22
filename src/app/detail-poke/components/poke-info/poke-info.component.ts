@@ -38,7 +38,11 @@ export class PokeInfoComponent implements OnInit {
     
       this.pokeService.getPokemonByUrl(this.poke.species.url).subscribe(
         p => {
-         this.description = p.flavor_text_entries[3].flavor_text;
+          for (let index = 0; index < p.flavor_text_entries.length; index++) {
+            if (p.flavor_text_entries[index].language.name == "es") {
+              this.description = p.flavor_text_entries[index].flavor_text;
+            }
+          }
         }
       );
     

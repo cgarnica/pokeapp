@@ -8,7 +8,7 @@
 <div class="w-100"></div>
 
   <div>
-    <nav aria-label="Page navigation example">
+    <nav aria-label="Page navigation example" *ngIf="!isSearch">
         <ul class="pagination justify-content-center">
           <li class="page-item">
             <button class="page-link"    [disabled]="isPageZero() ? true : null" (click)="previous()">Anterior</button>

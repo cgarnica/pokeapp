@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonsService } from "../../services/pokemons.service";
-import { books } from "../../../books";
 import { IPokeList } from '../../models/interfaces/poke-list';
 import { FavoritesService } from '../../../favorites/services/favorites.service';
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -18,14 +17,25 @@ export class PokeListComponent implements OnInit {
   favoriteList: any[] = [];
   page: any;
   limit:any;
+  isFirtTime: boolean;
+  isSearch: boolean;
 
-  constructor(private pokeService: PokemonsService, private favoritesServices: FavoritesService, private authFire: AngularFireAuth, private searchService: SearchDataService) { }
+  constructor(private pokeService: PokemonsService, private favoritesServices: FavoritesService, private authFire: AngularFireAuth, private searchService: SearchDataService) { 
+    this.isFirtTime = true;
+  }
 
   ngOnInit() {
+    this.isSearch = false;
     this.searchService.currentMessage.subscribe(message => {
       if(message)
-        alert(message)}
-      );
+          this.searchPoke(message)
+        else
+        if(!this.isFirtTime){
+          this.list();
+          this.isSearch = false;
+        }
+        this.isFirtTime = false; 
+      });
     this.page = 0;
     this.limit = 15;
     //
@@ -48,6 +58,23 @@ export class PokeListComponent implements OnInit {
 
     this.list();
 
+  }
+
+  searchPoke(name:string){
+
+      this.isSearch = true;
+      this.pokeService.list()
+      .subscribe(
+        list => {
+          
+          
+          this.pokeList.results = list.results.filter(x => x.name == name);
+          
+        }
+      );
+      
+
+    
   }
 
   addFavorite(book){

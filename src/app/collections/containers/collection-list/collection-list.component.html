@@ -2,7 +2,7 @@
   <div class="collectionView">
 
       <div class="form-group">
-          <button class="btn btn-primary" (click)="showCreate()">Crear</button>
+          <button class="col-12 col-md-auto col-lg-auto btn btn-secondary mybtn" (click)="showCreate()">Crear</button>
           <div class id="collection_addition" *ngIf="show">
               <app-collection-form (submitted)="newCollection($event)"></app-collection-form>
           </div>
@@ -11,15 +11,15 @@
           <div class="list-group-title col-md-auto" style="background-color: lightgrey">Colecciones</div>
           <br>
           <div class="row">
-              <div *ngFor="let collection of listCollections | async" class="form-group col-md-6">
+              <div *ngFor="let collection of listCollections | async" class="form-group col-md-12">
                   <div style="background-color: lightcyan">
                       <div class="card-header">Nombre: {{collection.name}}</div>
                       <div class="card-body">Descripción: {{collection.description}}</div>
 
                   </div>
                   <div class="col-xs-4">
-                      <a class="col-12 col-md-auto col-lg-auto btn btn-primary mybtn" [routerLink]="['../collectionBooks/', collection.key]">Entrar</a>
-                      <div class="col-12 col-md-auto col-lg-auto btn btn-secondary mybtn" (click)="removeCollection(collection.name, collection.key)">Eliminar colección</div>
+                        <input type="button" value="Entrar" [routerLink]="['../collectionBooks/', collection.key]" class="col-12 col-md-auto col-lg-auto btn btn-secondary mybtn">
+                        <div class="col-12 col-md-auto col-lg-auto btn btn-secondary mybtn" (click)="removeCollection(collection.name, collection.key)">Eliminar colección</div>
                   </div>
 
               </div>

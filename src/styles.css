@@ -104,6 +104,10 @@ div.user-image > img {
     margin: 5px 10% 5px 0;
 }
 
+.detail-header{
+    width: 100%;
+}
+
 .detail-header .title{
     font-size: 35px;
     line-height: 15px;
@@ -111,12 +115,17 @@ div.user-image > img {
     letter-spacing: 2px;
     font-weight: bold;
     text-align: -webkit-left;
+    width: 50%;
+    float: left;
+    margin-top: 5px;
 }
 
 .detail-header .btn-add{
     text-align: -webkit-right;
+    width: 50%;
+    float: right;
 }
 
 .img-detail{
-    width: 100%;
+    width: 60%;
 }

@@ -129,3 +129,15 @@ div.user-image > img {
 .img-detail{
     width: 60%;
 }
+
+.user-window .form-group{
+    width: 100%;
+}
+
+.user-window .form-group li{
+    list-style-type: none;
+    display:block;
+    float:left;
+    width: 100%;
+    margin-left: -16px;
+}

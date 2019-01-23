@@ -8,11 +8,10 @@
       <div class="btn-add">
         <div class="col-6">
           <button class="btn btn-primary" (click)="onNavImageClick();">
-            <i class="fa fa-list-ul"></i> Agregar a Colleccion
+            <i class="fa fa-list-ul"></i> Agregar una Colección
           </button>
           <div class="user-window panel"  [@popupAnimation]="popupState" [ngClass]="((popupState == 'closed') ? 'user-window-hidden': '')" (click)="onNavImageClick();">
             <div style="align-self: center;">
-              <h5 style="color:black">Agregar a Colección</h5>
               <div class="row">
                 <ul class="form-group">
                   <li *ngFor="let collection of listCollections | async">

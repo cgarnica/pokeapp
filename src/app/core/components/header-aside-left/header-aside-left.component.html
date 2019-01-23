@@ -2,5 +2,7 @@
     <img [src]="(user?.photoURL)? user?.photoURL : 'http://s3.amazonaws.com/37assets/svn/765-default-avatar.png'">
 </div>
 <div class="user-info">
-    <h3>{{(user?.displayName)? user?.displayName : user?.email }}</h3>
+    <div class="emailText">
+        <h3>{{(user?.displayName)? user?.displayName : user?.email }}</h3>
+    </div>
 </div>

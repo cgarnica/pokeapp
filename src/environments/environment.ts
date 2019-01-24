@@ -7,14 +7,15 @@ export const environment = {
   production: false,
   apiUrl: 'https://pokeapi.co/api/v2/',
   firebaseConfig: {
-    apiKey: "AIzaSyA0vOQvjNw2rfTqACtPfDHzjbozLI5n9zo",
-    authDomain: "poketest-ef958.firebaseapp.com",
-    databaseURL: "https://poketest-ef958.firebaseio.com",
-    projectId: "poketest-ef958",
-    storageBucket: "poketest-ef958.appspot.com",
-    messagingSenderId: "465416200077"
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: ""
   }
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

@@ -8,19 +8,22 @@ h1 {
 	width: 300px;
 }
 
-
-
-
 .user-window{
         color: white;
-        position: absolute;        
-        top: 10px;
-        left: 15px;
-        border: 1px solid black;
-        width: 200px; 
-	background-color: #007bff;
-	height: 200px !important;
-        border-radius: 5%;
+        position: absolute;
+        width: 200px;
+        height: 200px !important;
         z-index: 999;
-        overflow: auto;
-    }
+}
+
+.user-window .btn{
+        width: 100%;
+        background-color: white;
+        color: #367fa9;
+}
+
+.btn:hover, .btn:focus {
+        background-color: #0074A9 !important;
+        outline: none !important;
+        color: white !important;
+}
